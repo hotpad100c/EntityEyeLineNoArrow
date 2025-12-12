@@ -1,9 +1,10 @@
 package com.example.mixin.client;
 
-import net.minecraft.client.render.debug.EntityHitboxDebugRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.debug.gizmo.GizmoDrawing;
+import net.minecraft.client.renderer.debug.EntityHitboxDebugRenderer;
+import net.minecraft.gizmos.GizmoStyle;
+import net.minecraft.gizmos.Gizmos;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -12,26 +13,25 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class EntityHitboxDebugRendererMixin {
     
     @Redirect(
-        method = "drawHitbox",
+        method = "showHitboxes",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/debug/gizmo/GizmoDrawing;arrow(Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Vec3d;I)Lnet/minecraft/world/debug/gizmo/GizmoDrawing$VisibilityConfigurable;",
-            ordinal = 0 
+            target = "Lnet/minecraft/gizmos/Gizmos;arrow(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;I)V",
+            ordinal = 0
         )
     )
-    private static GizmoDrawing.VisibilityConfigurable redirectDirectionArrow(Vec3d start, Vec3d end, int color) {
-        return GizmoDrawing.line(start, end, color);
+    private void arrow1(Vec3 from, Vec3 to, int color) {
+        Gizmos.line(from, to, GizmoStyle.stroke(color));
     }
-    
     @Redirect(
-        method = "drawHitbox",
+        method = "showHitboxes",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/debug/gizmo/GizmoDrawing;arrow(Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Vec3d;I)Lnet/minecraft/world/debug/gizmo/GizmoDrawing$VisibilityConfigurable;",
-            ordinal = 1 
+            target = "Lnet/minecraft/gizmos/Gizmos;arrow(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;I)V",
+            ordinal = 1
         )
     )
-    private static GizmoDrawing.VisibilityConfigurable redirectVelocityArrow(Vec3d start, Vec3d end, int color) {
-        return GizmoDrawing.line(start, end, color);
+    private void arrow2(Vec3 from, Vec3 to, int color) {
+        Gizmos.line(from, to, GizmoStyle.stroke(color));
     }
 }
