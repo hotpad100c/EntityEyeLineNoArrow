@@ -21,7 +21,7 @@ public class EntityHitboxDebugRendererMixin {
         )
     )
     private void arrow1(Vec3 from, Vec3 to, int color) {
-        Gizmos.line(from, to, GizmoStyle.stroke(color));
+        Gizmos.line(from, to, color);
     }
     @Redirect(
         method = "showHitboxes",
@@ -32,6 +32,6 @@ public class EntityHitboxDebugRendererMixin {
         )
     )
     private void arrow2(Vec3 from, Vec3 to, int color) {
-        Gizmos.line(from, to, GizmoStyle.stroke(color));
+        Gizmos.line(from, to, color);
     }
 }
