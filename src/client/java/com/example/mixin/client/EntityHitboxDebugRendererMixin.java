@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class EntityHitboxDebugRendererMixin {
     
     @Redirect(
-        method = "showHitboxes",
+        method = "showHitboxes(Lnet/minecraft/world/entity/Entity;FZ)V",
         at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/gizmos/Gizmos;arrow(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;I)V",
@@ -24,7 +24,7 @@ public class EntityHitboxDebugRendererMixin {
         Gizmos.line(from, to, color);
     }
     @Redirect(
-        method = "showHitboxes",
+        method = "showHitboxes(Lnet/minecraft/world/entity/Entity;FZ)V",
         at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/gizmos/Gizmos;arrow(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;I)V",
