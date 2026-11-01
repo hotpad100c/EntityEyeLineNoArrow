@@ -1,7 +1,7 @@
 package com.example.mixin.client;
 
 import net.minecraft.client.renderer.debug.EntityHitboxDebugRenderer;
-import net.minecraft.gizmos.GizmoStyle;
+import net.minecraft.gizmos.GizmoProperties;
 import net.minecraft.gizmos.Gizmos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
@@ -16,22 +16,22 @@ public class EntityHitboxDebugRendererMixin {
         method = "showHitboxes(Lnet/minecraft/world/entity/Entity;FZ)V",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/gizmos/Gizmos;arrow(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;I)V",
+            target = "Lnet/minecraft/gizmos/Gizmos;arrow(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;I)Lnet/minecraft/gizmos/GizmoProperties;",
             ordinal = 0
         )
     )
-    private void arrow1(Vec3 from, Vec3 to, int color) {
-        Gizmos.line(from, to, color);
+    private GizmoProperties arrow1(Vec3 from, Vec3 to, int color) {
+        return Gizmos.line(from, to, color);
     }
     @Redirect(
         method = "showHitboxes(Lnet/minecraft/world/entity/Entity;FZ)V",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/gizmos/Gizmos;arrow(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;I)V",
+            target = "Lnet/minecraft/gizmos/Gizmos;arrow(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;I)Lnet/minecraft/gizmos/GizmoProperties;",
             ordinal = 1
         )
     )
-    private void arrow2(Vec3 from, Vec3 to, int color) {
-        Gizmos.line(from, to, color);
+    private GizmoProperties arrow2(Vec3 from, Vec3 to, int color) {
+        return Gizmos.line(from, to, color);
     }
 }
