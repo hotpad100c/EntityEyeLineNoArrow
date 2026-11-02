@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "simpleeyeline",
 	"version": "${version}",
-	"name": "Example mod",
+	"name": "SimpleEyeLine",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
 		"Me!"
@@ -16,10 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"ml.mypals.ExampleMod"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"ml.mypals.ExampleModClient"
 		]
 	},
 	"mixins": [
