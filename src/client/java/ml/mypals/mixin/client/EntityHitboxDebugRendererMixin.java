@@ -1,4 +1,4 @@
-package com.example.mixin.client;
+package ml.mypals.mixin.client;
 
 import net.minecraft.client.renderer.debug.EntityHitboxDebugRenderer;
 import net.minecraft.gizmos.GizmoProperties;

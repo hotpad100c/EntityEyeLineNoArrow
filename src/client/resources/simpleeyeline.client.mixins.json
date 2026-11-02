@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "com.example.mixin.client",
+	"package": "ml.mypals.mixin.client",
 	"compatibilityLevel": "JAVA_21",
 	"client": [
 		"EntityHitboxDebugRendererMixin"
