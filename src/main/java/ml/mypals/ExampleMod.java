@@ -1,4 +1,4 @@
-package com.example;
+package ml.mypals;
 
 import net.fabricmc.api.ModInitializer;
 
